@@ -1,0 +1,108 @@
+📚 What is an .ipynb File?
+💡 Definition:
+.ipynb stands for IPython Notebook.
+
+It’s a JSON-based file format that contains code cells, markdown cells, and their output.
+
+Used mainly with Jupyter Notebooks to write and execute Python code interactively.
+
+📂 Structure of an .ipynb File:
+Contains multiple cells:
+
+Code Cells: For writing and running Python code.
+
+Markdown Cells: For adding formatted text, headings, and explanations.
+
+Output: Displays the results or errors after executing a cell.
+
+🎯 How Jupyter Works in VS Code
+➡️ Opening a Notebook
+Open any .ipynb file, and VS Code automatically switches to the Jupyter Notebook interface.
+
+🚀 Jupyter Notebook Toolbar in VS Code
+🛠️ Toolbar Options:
+▶️ Run Cell
+
+Runs the selected cell.
+
+Shortcut: Shift + Enter to run and move to the next cell.
+
+⏩ Run All
+
+Executes all cells in the notebook.
+
+Useful when restarting the kernel or running the whole notebook.
+
+🧠 Restart Kernel
+
+Restarts the Python kernel, clearing all variables and outputs.
+
+Use this if your notebook is stuck or giving unexpected results.
+
+📄 Add Code/Markdown Cell
+
+Adds a new cell below the selected cell.
+
+Select between Code and Markdown from the dropdown.
+
+💾 Save Notebook
+
+Saves the notebook and all outputs.
+
+🔄 Clear Output
+
+Clears the output of the selected or all cells.
+
+✨ Working with Cells in Jupyter
+1️⃣ Code Cell
+Contains Python code that can be executed.
+
+Output is shown immediately after execution.
+
+python
+Copy
+Edit
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)
+2️⃣ Markdown Cell
+Used to write text, documentation, and explanations.
+
+Supports Markdown syntax for formatting.
+
+Example:
+markdown
+Copy
+Edit
+# This is a Heading
+## Sub-heading
+- Bullet list
+- Another bullet
+📢 Important Shortcuts:
+Shift + Enter → Run current cell and move to next.
+
+Ctrl + Enter → Run current cell but stay in the same cell.
+
+A → Insert cell above.
+
+B → Insert cell below.
+
+D, D → Delete selected cell.
+
+🎯 Where is the Kernel in VS Code?
+The Kernel is the Python interpreter that runs your code.
+
+Located in the top right of the Jupyter interface in VS Code.
+
+If you need to change the environment:
+
+Click on the kernel name.
+
+Select the desired environment or interpreter.
+
+🎉 Summary:
+.ipynb files allow you to mix code and explanations.
+
+VS Code provides a powerful interface to run, debug, and manage Jupyter notebooks.
+
+Learn the shortcuts to work faster and efficiently.
