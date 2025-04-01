@@ -1,0 +1,854 @@
+
+📚 NumPy Definition
+NumPy (Numerical Python) is a powerful Python library used for:
+
+-Efficient numerical computations.
+-Handling large arrays and matrices.
+-Performing mathematical operations on arrays.
+
+✅ Why Use NumPy?
+-Faster and more memory-efficient than Python lists.
+-Provides many built-in functions for operations like sorting, reshaping, and matrix manipulation.
+
+🎯 NumPy Key Concepts (with Explanations)
+1️⃣ Creating Arrays
+💡 Definition:
+An array is a collection of elements of the same data type stored in a contiguous memory location. NumPy provides the np.array() method to create arrays.
+
+📝 Code Example:
+import numpy as np
+
+# 1D Array
+arr1 = np.array([1, 2, 3, 4, 5])
+print("1D Array:", arr1)
+
+# 2D Array (Matrix)
+arr2 = np.array([[1, 2, 3], [4, 5, 6]])
+print("2D Array:\n", arr2)
+
+# 3D Array (Tensor)
+arr3 = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+print("3D Array:\n", arr3)
+
+✅ Explanation:
+
+-np.array() converts lists or lists of lists into NumPy arrays.
+-Arrays can be 1D, 2D, or 3D, depending on the shape.
+
+
+
+2️⃣ Array Properties in NumPy
+
+💡 Definition:
+Every NumPy array has certain properties that give information about its shape, size, and type of elements.
+
+
+📝 Key Properties:
+1️⃣ Shape (.shape)
+Returns a tuple indicating the dimensions of the array.
+
+Example:
+
+import numpy as np
+# 2D Array
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print("Shape of Array:", arr.shape)
+
+✅ Output:
+Shape of Array: (2, 3)
+- 2 → Number of rows.
+- 3 → Number of columns.
+
+2️⃣ Size (.size)
+Returns the total number of elements in the array.
+
+Example:
+print("Size of Array:", arr.size)
+✅ Output:
+Size of Array: 6
+
+3️⃣ Data Type (.dtype)
+Returns the data type of array elements.
+
+Example:
+print("Data Type of Array:", arr.dtype)
+✅ Output:
+Data Type of Array: int32 (or int64 depending on your system)
+
+4️⃣ Number of Dimensions (.ndim)
+Returns the number of dimensions (axes) of the array.
+
+Example:
+print("Number of Dimensions:", arr.ndim)
+
+✅ Output:
+Number of Dimensions: 2
+
+5️⃣ Item Size (.itemsize)
+Returns the size of each element in bytes.
+
+Example:
+print("Size of Each Item:", arr.itemsize, "bytes")
+✅ Output:
+Size of Each Item: 4 bytes (or 8 bytes for int64)
+
+🎯 Summary of Properties:
+Property	    Description	                        Example Output
+arr.shape	    Shape of array	                        (2, 3)
+arr.size	    Total number of elements	             6
+arr.dtype	    Data type of elements	            int32 or int64
+arr.ndim	    Number of dimensions	                 2
+arr.itemsize	Size of each element in bytes	        4 or 8
+
+
+
+3️⃣ Array Initialization in NumPy
+
+💡 Definition:
+NumPy provides several functions to create arrays of specific shapes, filled with zeros, ones, or other values.
+
+📝 Common Array Initialization Methods
+1️⃣ Zeros (np.zeros())
+Creates an array filled with zeros.
+
+Syntax:
+np.zeros(shape, dtype=float)
+➡️ Example:
+import numpy as np
+
+# 1D array of zeros
+arr1 = np.zeros(5)
+print("1D Array of Zeros:\n", arr1)
+
+# 2D array of zeros
+arr2 = np.zeros((2, 3))
+print("\n2D Array of Zeros:\n", arr2)
+
+✅ Output:
+1D Array of Zeros:
+ [0. 0. 0. 0. 0.]
+
+2D Array of Zeros:
+ [[0. 0. 0.]
+  [0. 0. 0.]]
+
+2️⃣ Ones (np.ones())
+Creates an array filled with ones.
+
+Syntax:
+np.ones(shape, dtype=float)
+➡️ Example:
+# 1D array of ones
+arr1 = np.ones(4)
+print("1D Array of Ones:\n", arr1)
+
+# 2D array of ones
+arr2 = np.ones((3, 2), dtype=int)
+print("\n2D Array of Ones:\n", arr2)
+✅ Output:
+1D Array of Ones:
+ [1. 1. 1. 1.]
+
+2D Array of Ones:
+ [[1 1]
+  [1 1]
+  [1 1]]
+
+3️⃣ Empty (np.empty())
+Creates an array without initializing values (contains random or garbage values).
+
+Syntax:
+np.empty(shape, dtype=float)
+➡️ Example:
+# 2D empty array
+arr = np.empty((2, 3))
+print("Empty Array:\n", arr)
+✅ Output:
+Empty Array:
+ [[0. 0. 0.]
+  [0. 0. 0.]]  # Or random uninitialized values
+
+4️⃣ Full (np.full())
+Creates an array filled with a specified value.
+
+Syntax:
+np.full(shape, fill_value, dtype=float)
+➡️ Example:
+# 2D array filled with 7
+arr = np.full((3, 3), 7)
+print("Array Filled with 7:\n", arr)
+
+✅ Output:
+Array Filled with 7:
+ [[7 7 7]
+  [7 7 7]
+  [7 7 7]]
+  
+5️⃣ Identity Matrix (np.eye())
+Creates a square identity matrix (diagonal filled with 1).
+
+Syntax:
+np.eye(n, dtype=float)
+➡️ Example:
+# 3x3 identity matrix
+arr = np.eye(3)
+print("Identity Matrix:\n", arr)
+✅ Output:
+Identity Matrix:
+ [[1. 0. 0.]
+  [0. 1. 0.]
+  [0. 0. 1.]]
+
+
+🎯 Summary Table:
+Function	Description                  	        Example Output
+np.zeros()	Array filled with zeros	                [0., 0.]
+np.ones()	Array filled with ones                  [1., 1.]
+np.empty()	Uninitialized array	                    [?, ?]
+np.full()	Array filled with a constant value	    [7, 7]
+np.eye()	Identity matrix	                        [[1, 0], [0, 1]]
+
+
+
+4️⃣ Array Indexing and Slicing in NumPy
+
+💡 Definition:
+Indexing allows you to access elements from an array.
+
+Slicing helps extract a portion of an array.
+
+📚 Indexing Basics
+
+1️⃣ Accessing Elements in 1D Array
+Use square brackets [] with the index to access elements.
+
+Indexing starts from 0 (like Python lists).
+
+➡️ Example:
+import numpy as np
+
+# 1D Array
+arr = np.array([10, 20, 30, 40, 50])
+print("First Element:", arr[0])
+print("Last Element:", arr[-1])
+✅ Output:
+First Element: 10
+Last Element: 50
+
+2️⃣ Accessing Elements in 2D Array
+Use row and column indices: arr[row, col]
+
+➡️ Example:
+# 2D Array
+arr2 = np.array([[1, 2, 3],
+                 [4, 5, 6],
+                 [7, 8, 9]])
+print("Element at (0, 1):", arr2[0, 1])  # Row 0, Column 1
+print("Element at (2, 2):", arr2[2, 2])  # Row 2, Column 2
+✅ Output:
+Element at (0, 1): 2
+Element at (2, 2): 9
+
+3️⃣ Accessing Entire Row or Column
+Use : to select an entire row or column.
+
+➡️ Example:
+# Access entire row
+print("Row 1:", arr2[1, :])  # Second row
+
+# Access entire column
+print("Column 2:", arr2[:, 2])  # Third column
+✅ Output:
+Row 1: [4 5 6]
+Column 2: [3 6 9]
+📚 Slicing Basics
+1️⃣ Slicing 1D Array
+Syntax:
+arr[start:end:step]
+start → Starting index (inclusive)
+
+end → Ending index (exclusive)
+
+step → Step size (optional)
+
+➡️ Example:
+arr = np.array([10, 20, 30, 40, 50, 60])
+print("Elements from 1 to 4:", arr[1:4])  # Index 1 to 3
+print("Every 2nd element:", arr[::2])    # Every 2nd element
+print("Reversed array:", arr[::-1])      # Reverse the array
+✅ Output:
+Elements from 1 to 4: [20 30 40]
+Every 2nd element: [10 30 50]
+Reversed array: [60 50 40 30 20 10]
+
+2️⃣ Slicing 2D Array
+Syntax:
+arr[row_start:row_end, col_start:col_end]
+➡️ Example:
+# 2D Array
+arr2 = np.array([[1, 2, 3],
+                 [4, 5, 6],
+                 [7, 8, 9]])
+print("Top-left 2x2 slice:\n", arr2[0:2, 0:2])  # First 2 rows and 2 columns
+print("Last column:\n", arr2[:, -1])  # Last column
+✅ Output:
+Top-left 2x2 slice:
+ [[1 2]
+  [4 5]]
+Last column:
+ [3 6 9]
+
+🎯 Advanced Indexing and Slicing
+
+1️⃣ Boolean Indexing
+Select elements based on conditions.
+arr = np.array([10, 20, 30, 40, 50])
+print("Elements greater than 25:", arr[arr > 25])
+✅ Output:
+Elements greater than 25: [30 40 50]
+
+2️⃣ Fancy Indexing
+Select multiple elements using an array of indices.
+arr = np.array([10, 20, 30, 40, 50])
+indices = [0, 2, 4]
+print("Selected elements:", arr[indices])
+✅ Output:
+Selected elements: [10 30 50]
+
+🎯 Summary Table:
+Operation	                Syntax	                                        Description
+Access element	    arr[i] or arr[i, j]	                                Access element by index
+Slice 1D array	    arr[start:end:step]                             	Get part of the array
+Slice 2D array	    arr[row_start:row_end, col_start:col_end]	        Slice 2D arrays
+Boolean indexing	arr[condition]                                  	Select elements by condition
+Fancy indexing	    arr[[i, j, k]]                                  	Select multiple elements
+
+
+
+
+5️⃣ Array Manipulation in NumPy
+💡 Definition:
+Array manipulation in NumPy allows you to:
+
+-Reshape arrays
+-Concatenate, split, and stack arrays
+-Add or remove dimensions
+
+📚 Basic Array Manipulation Methods
+
+1️⃣ Reshaping Arrays (np.reshape())
+Changes the shape of an array without modifying the data.
+
+Syntax:
+np.reshape(arr, new_shape)
+➡️ Example:
+import numpy as np
+
+# 1D array to 2D
+arr = np.array([1, 2, 3, 4, 5, 6])
+reshaped_arr = arr.reshape(2, 3)
+print("Reshaped Array:\n", reshaped_arr)
+
+✅ Output:
+Reshaped Array:
+ [[1 2 3]
+  [4 5 6]]
+
+✅ Rules for Reshaping:
+The new shape must have the same number of elements as the original.
+
+arr.size should remain the same.
+
+2️⃣ Flattening Arrays (np.ravel() and np.flatten())
+Converts multi-dimensional arrays to 1D arrays.
+
+ravel() → Returns a view (modifications affect the original).
+
+flatten() → Returns a copy (modifications do not affect the original).
+
+➡️ Example:
+arr2d = np.array([[1, 2, 3], [4, 5, 6]])
+
+# Flatten using ravel
+flat_ravel = arr2d.ravel()
+print("Flattened with ravel:", flat_ravel)
+
+# Flatten using flatten
+flat_flatten = arr2d.flatten()
+print("Flattened with flatten:", flat_flatten)
+
+✅ Output:
+Flattened with ravel: [1 2 3 4 5 6]
+Flattened with flatten: [1 2 3 4 5 6]
+
+3️⃣ Transposing Arrays (np.transpose() or arr.T)
+Flips rows and columns (like a matrix transpose).
+
+Syntax:
+np.transpose(arr)  # OR
+arr.T
+➡️ Example:
+arr = np.array([[1, 2, 3],
+                [4, 5, 6]])
+
+# Transpose using transpose()
+transposed = np.transpose(arr)
+print("Transposed Array:\n", transposed)
+
+# Transpose using arr.T
+print("\nTransposed Array with arr.T:\n", arr.T)
+
+✅ Output:
+Transposed Array:
+ [[1 4]
+  [2 5]
+  [3 6]]
+
+Transposed Array with arr.T:
+ [[1 4]
+  [2 5]
+  [3 6]]
+
+4️⃣ Stacking Arrays (np.vstack() and np.hstack())
+Vertical Stacking (vstack) → Combines arrays along rows.
+
+Horizontal Stacking (hstack) → Combines arrays along columns.
+
+➡️ Example:
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+
+# Vertical stack
+v_stacked = np.vstack((arr1, arr2))
+print("Vertical Stack:\n", v_stacked)
+
+# Horizontal stack
+h_stacked = np.hstack((arr1, arr2))
+print("\nHorizontal Stack:\n", h_stacked)
+✅ Output:
+Vertical Stack:
+ [[1 2 3]
+  [4 5 6]]
+
+Horizontal Stack:
+ [1 2 3 4 5 6]
+5️⃣ Splitting Arrays (np.split())
+Splits an array into multiple sub-arrays.
+
+Syntax:
+np.split(arr, sections, axis)
+➡️ Example:
+arr = np.array([1, 2, 3, 4, 5, 6])
+
+# Split into 3 parts
+split_arr = np.split(arr, 3)
+print("Split Array:", split_arr)
+
+✅ Output:
+Split Array: [array([1, 2]), array([3, 4]), array([5, 6])]
+
+6️⃣ Adding/Removing Dimensions (np.expand_dims() and np.squeeze())
+➡️ Expand Dimensions (np.expand_dims())
+Adds an extra dimension to the array.
+arr = np.array([1, 2, 3])
+
+# Expand to 2D
+expanded_arr = np.expand_dims(arr, axis=0)
+print("Expanded Array:\n", expanded_arr)
+print("Shape:", expanded_arr.shape)
+
+✅ Output:
+Expanded Array:
+ [[1 2 3]]
+Shape: (1, 3)
+
+➡️ Squeeze Dimensions (np.squeeze())
+Removes dimensions with size 1.
+
+arr = np.array([[[1, 2, 3]]])
+
+# Squeeze array
+squeezed_arr = np.squeeze(arr)
+print("Squeezed Array:\n", squeezed_arr)
+print("Shape:", squeezed_arr.shape)
+
+✅ Output:
+Squeezed Array:
+ [1 2 3]
+Shape: (3,)
+
+🎯 Summary Table:
+Operation	            Function	                  Description
+Reshape	            np.reshape()	                Change shape
+Flatten	            np.ravel(), np.flatten()	    Convert to 1D
+Transpose	        np.transpose() or arr.T	        Flip rows and columns
+Stack Arrays	    np.vstack() / np.hstack()	    Stack arrays vertically or horizontally
+Split Arrays	    np.split()	                    Split into smaller arrays
+Add Dimension	    np.expand_dims()	            Add extra dimension
+Remove Dimension	np.squeeze()	                Remove dimensions of size 1
+
+
+
+6️⃣ Mathematical Operations in NumPy
+💡 Definition:
+NumPy provides a wide range of mathematical functions that allow you to perform operations on arrays element-wise or aggregate data quickly.
+
+📚 Basic Mathematical Operations
+1️⃣ Element-wise Operations
+These operations apply element-wise on arrays.
+
+➡️ Addition, Subtraction, Multiplication, and Division
+Syntax:
+result = arr1 + arr2
+result = arr1 - arr2
+result = arr1 * arr2
+result = arr1 / arr2
+
+➡️ Example:
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+
+# Element-wise operations
+add_res = arr1 + arr2
+sub_res = arr1 - arr2
+mul_res = arr1 * arr2
+div_res = arr1 / arr2
+
+print("Addition:", add_res)
+print("Subtraction:", sub_res)
+print("Multiplication:", mul_res)
+print("Division:", div_res)
+
+✅ Output:
+Addition: [5 7 9]
+Subtraction: [-3 -3 -3]
+Multiplication: [4 10 18]
+Division: [0.25 0.4 0.5]
+
+2️⃣ Scalar Operations
+Operate between an array and a single value.
+
+Syntax:
+arr * scalar
+arr + scalar
+arr / scalar
+➡️ Example:
+arr = np.array([1, 2, 3])
+
+# Scalar operations
+print("Multiply by 2:", arr * 2)
+print("Add 5:", arr + 5)
+print("Divide by 3:", arr / 3)
+
+✅ Output:
+Multiply by 2: [2 4 6]
+Add 5: [6 7 8]
+Divide by 3: [0.333 0.667 1.0]
+
+3️⃣ Power and Modulo
+Power (np.power()) → Raise each element to a given power.
+
+Modulo (np.mod() or %) → Returns remainder of division.
+
+➡️ Example:
+arr = np.array([1, 2, 3, 4])
+
+# Power and Modulo
+pow_res = np.power(arr, 2)
+mod_res = arr % 3
+
+print("Power Result:", pow_res)
+print("Modulo Result:", mod_res)
+
+✅ Output:
+Power Result: [ 1  4  9 16]
+Modulo Result: [1 2 0 1]
+4️⃣ Exponential and Logarithm
+Exponential (np.exp()) → Computes e^x.
+
+Logarithm (np.log(), np.log10()) → Computes natural log or log base 10.
+
+➡️ Example:
+arr = np.array([1, 2, 3])
+
+# Exponential and Log
+exp_res = np.exp(arr)
+log_res = np.log(arr)
+log10_res = np.log10(arr)
+
+print("Exponential Result:", exp_res)
+print("Natural Log Result:", log_res)
+print("Log Base 10 Result:", log10_res)
+
+✅ Output:
+Exponential Result: [ 2.71828183  7.3890561  20.08553692]
+Natural Log Result: [0.         0.69314718 1.09861229]
+Log Base 10 Result: [0. 0.30103 0.4771 ]
+
+5️⃣ Trigonometric Functions
+Includes sine, cosine, and tangent.
+
+Syntax:
+np.sin(arr)
+np.cos(arr)
+np.tan(arr)
+➡️ Example:
+angles = np.array([0, np.pi/2, np.pi])
+
+# Trigonometric operations
+sin_res = np.sin(angles)
+cos_res = np.cos(angles)
+tan_res = np.tan(angles)
+
+print("Sine:", sin_res)
+print("Cosine:", cos_res)
+print("Tangent:", tan_res)
+
+✅ Output:
+Sine: [0. 1. 0.]
+Cosine: [ 1.  0. -1.]
+Tangent: [0. 1.63312394e+16 -0.]
+
+6️⃣ Rounding and Clipping
+np.round() → Rounds elements to the nearest integer.
+
+np.floor() → Rounds down to the nearest integer.
+
+np.ceil() → Rounds up to the nearest integer.
+
+np.clip() → Limits values between a minimum and maximum.
+
+➡️ Example:
+arr = np.array([1.7, 2.4, -0.6, -1.2, 3.9])
+
+# Rounding
+round_res = np.round(arr)
+floor_res = np.floor(arr)
+ceil_res = np.ceil(arr)
+
+# Clipping
+clip_res = np.clip(arr, -1, 2)
+
+print("Rounded:", round_res)
+print("Floored:", floor_res)
+print("Ceiled:", ceil_res)
+print("Clipped between -1 and 2:", clip_res)
+
+✅ Output:
+Rounded: [ 2.  2. -1. -1.  4.]
+Floored: [ 1.  2. -1. -2.  3.]
+Ceiled: [ 2.  3. -0. -1.  4.]
+Clipped between -1 and 2: [ 1.7  2.  -0.6 -1.   2. ]
+📊 Aggregation and Statistical Operations
+
+1️⃣ Sum, Mean, and Standard Deviation
+Sum (np.sum()) → Adds all elements.
+
+Mean (np.mean()) → Computes average.
+
+Standard Deviation (np.std()) → Measures spread of data.
+
+➡️ Example:
+arr = np.array([1, 2, 3, 4, 5])
+
+# Aggregation
+sum_res = np.sum(arr)
+mean_res = np.mean(arr)
+std_res = np.std(arr)
+
+print("Sum:", sum_res)
+print("Mean:", mean_res)
+print("Standard Deviation:", std_res)
+
+✅ Output:
+Sum: 15
+Mean: 3.0
+Standard Deviation: 1.4142135623730951
+
+2️⃣ Min, Max, and Argmin/Argmax
+Min (np.min()) → Finds minimum value.
+
+Max (np.max()) → Finds maximum value.
+
+Argmin (np.argmin()) → Returns index of min value.
+
+Argmax (np.argmax()) → Returns index of max value.
+
+➡️ Example:
+arr = np.array([3, 7, 1, 9, 4])
+
+min_res = np.min(arr)
+max_res = np.max(arr)
+argmin_res = np.argmin(arr)
+argmax_res = np.argmax(arr)
+
+print("Min:", min_res)
+print("Max:", max_res)
+print("Index of Min:", argmin_res)
+print("Index of Max:", argmax_res)
+
+✅ Output:
+Min: 1
+Max: 9
+Index of Min: 2
+Index of Max: 3
+
+🎯 Summary Table:
+Operation	            Function	          Description
+Addition	           arr1 + arr2	        Element-wise addition
+Subtraction	           arr1 - arr2	        Element-wise subtraction
+Multiplication	       arr1 * arr2	        Element-wise multiplication
+Division	           arr1 / arr2	        Element-wise division
+Power	               np.power()	        Raise to power
+Modulo	             np.mod() or %	        Remainder
+Exponential	           np.exp()	            Compute e^x
+Logarithm	           np.log()	            Natural log
+Trigonometric	      np.sin(), np.cos()	Sine, Cosine, Tangent
+Sum	                   np.sum()	            Sum of elements
+Mean	               np.mean()	        Average
+Standard Deviation	   np.std()	            Spread of data
+Min/Max	              np.min(), np.max()	Minimum and maximum values
+Argmin/Argmax	    np.argmin(),np.argmax()	Indices of min/max
+
+
+
+
+
+7️⃣ Broadcasting and Vectorized Operations
+💡 Definition:
+Broadcasting allows NumPy to perform operations on arrays of different shapes, making operations more efficient without the need for explicit looping.
+
+Vectorized Operations use optimized C-based implementations behind the scenes to perform element-wise operations quickly.
+
+📚 Understanding Broadcasting
+📏 Rules of Broadcasting
+When performing operations on arrays of different shapes, NumPy follows these rules:
+
+Align Dimensions: If the dimensions of the arrays don’t match, NumPy automatically expands the smaller array by adding dimensions to the left.
+
+Shape Matching: Arrays must have compatible dimensions. A dimension is compatible when:
+
+They are equal or
+
+One of them is 1, which allows it to be broadcasted.
+
+Repeat Elements: The smaller array is repeated along the dimension where the size is 1 to match the shape of the larger array.
+
+📊 Broadcasting Example:
+import numpy as np
+
+# Array 1 with shape (3, 1)
+arr1 = np.array([[1], [2], [3]])
+
+# Array 2 with shape (1, 3)
+arr2 = np.array([10, 20, 30])
+
+# Broadcasting during addition
+result = arr1 + arr2
+
+print("Array 1 Shape:", arr1.shape)
+print("Array 2 Shape:", arr2.shape)
+print("Result Shape:", result.shape)
+print("Result:\n", result)
+
+✅ Output:
+Array 1 Shape: (3, 1)
+Array 2 Shape: (1, 3)
+Result Shape: (3, 3)
+
+Result:
+ [[11 21 31]
+ [12 22 32]
+ [13 23 33]]
+
+🔥 How Broadcasting Works Here:
+arr1 shape: (3, 1)
+
+arr2 shape: (1, 3)
+
+NumPy stretches these arrays to the shape (3, 3) before performing addition.
+
+⚡️ Vectorized Operations
+📚 What is Vectorization?
+Vectorization is the process of applying operations to entire arrays without explicitly using loops, leading to faster and more efficient computations.
+
+➡️ Example:
+arr = np.array([1, 2, 3, 4, 5])
+
+# Vectorized Operations
+squared = arr ** 2
+doubled = arr * 2
+
+print("Squared:", squared)
+print("Doubled:", doubled)
+
+✅ Output:
+
+Squared: [ 1  4  9 16 25]
+Doubled: [ 2  4  6  8 10]
+
+🎯 When Does Broadcasting Happen?
+
+1️⃣ Scalar and Array
+A scalar is stretched to match the shape of an array.
+
+arr = np.array([1, 2, 3, 4])
+result = arr + 10
+print(result)  # [11 12 13 14]
+
+2️⃣ 2D and 1D Arrays
+The 1D array is broadcasted to match the 2D array.
+
+arr2D = np.array([[1, 2, 3],
+                  [4, 5, 6]])
+
+arr1D = np.array([10, 20, 30])
+
+result = arr2D + arr1D
+print(result)
+
+✅ Output:
+
+[[11 22 33]
+ [14 25 36]]
+
+3️⃣ Different Shapes
+Compatible dimensions allow broadcasting.
+arr1 = np.array([[1], [2], [3]])  # Shape: (3, 1)
+arr2 = np.array([10, 20, 30])     # Shape: (1, 3)
+
+result = arr1 * arr2
+print(result)
+
+✅ Output:
+[[10 20 30]
+ [20 40 60]
+ [30 60 90]]
+📚 Common Errors with Broadcasting
+
+❗️ Incompatible Shapes
+If shapes are incompatible, NumPy will throw a ValueError.
+]
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([[1, 2], [3, 4]])
+
+# This will throw an error
+result = arr1 + arr2
+❌ Error:
+ValueError: operands could not be broadcast together with shapes (3,) (2, 2)
+🧠 Broadcasting in ML Context
+Broadcasting is heavily used when normalizing data, applying mathematical operations, and vectorized transformations.
+
+Matrix-Vector Multiplication: Broadcasting makes it possible to efficiently multiply matrices and vectors without explicit loops.
+
+Gradient Calculations: In backpropagation, vectorized operations and broadcasting speed up matrix computations.
+
+🔥 Summary Table:
+Scenario	                Example	Shape        Result
+Scalar + Array	            arr + 10        	Scalar to Array
+Array + Array (same shape)	arr1 + arr2	        Element-wise Sum
+2D Array + 1D Array	        arr2D + arr1D   	Row-wise Addition
+Different Shapes	        arr1 * arr2	        Expanded to Match
