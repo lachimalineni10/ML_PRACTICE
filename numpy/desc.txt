@@ -261,6 +261,7 @@ print("Column 2:", arr2[:, 2])  # Third column
 ✅ Output:
 Row 1: [4 5 6]
 Column 2: [3 6 9]
+
 📚 Slicing Basics
 1️⃣ Slicing 1D Array
 Syntax:

@@ -1,0 +1,45 @@
+NumPy's linalg Module (Linear Algebra)
+The numpy.linalg module provides functions for performing linear algebra operations on matrices and vectors. It is built on top of LAPACK (Linear Algebra PACKage), which is optimized for high-performance calculations.
+
+Why Use numpy.linalg?
+The linalg module is essential for machine learning, data science, and engineering because it allows us to: ✅ Solve systems of linear equations
+✅ Compute matrix determinants, inverses, and eigenvalues
+✅ Perform Singular Value Decomposition (SVD) and Least Squares Solutions
+
+Key Functions in numpy.linalg
+Function	                    Description
+np.linalg.inv(A)	        Computes the inverse of matrix A
+np.linalg.det(A)	        Computes the determinant of matrix A
+np.linalg.eig(A)	        Computes eigenvalues and eigenvectors of A
+np.linalg.svd(A)	        Computes Singular Value Decomposition (SVD)
+np.linalg.norm(A)	        Computes the norm (magnitude) of a vector/matrix
+np.linalg.solve(A, b)	    Solves the system of Ax = b for x
+np.linalg.pinv(A)	        Computes the pseudo-inverse of A (Moore-Penrose inverse)
+
+Examples
+1. Compute Matrix Inverse (np.linalg.inv())
+import numpy as np
+A = np.array([[4, 7], 
+              [2, 6]])
+
+A_inv = np.linalg.inv(A)
+print("Inverse of A:\n", A_inv)
+
+2. Solve Linear Equations (np.linalg.solve())
+Solve the system:
+2x+y=1
+x+3y=5
+A = np.array([[2, 1], 
+              [1, 3]])
+b = np.array([1, 5])
+
+x = np.linalg.solve(A, b)
+print("Solution for x and y:", x)
+
+3. Compute Eigenvalues and Eigenvectors (np.linalg.eig())
+A = np.array([[3, -2], 
+              [1,  0]])
+
+eigenvalues, eigenvectors = np.linalg.eig(A)
+print("Eigenvalues:\n", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)

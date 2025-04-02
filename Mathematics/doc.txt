@@ -1,0 +1,4 @@
+2️⃣ Mathematics for ML
+✅ Linear Algebra ➝ Vectors, Matrices, and Operations
+✅ Calculus ➝ Differentiation and Optimization
+✅ Probability & Statistics ➝ Distributions, Mean, Variance, Hypothesis Testing
