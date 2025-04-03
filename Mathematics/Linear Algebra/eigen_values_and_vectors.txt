@@ -1,0 +1,354 @@
+## ◆ Eigenvalues and Eigenvectors
+
+### ✦ Definition
+
+In linear algebra, eigenvalues and eigenvectors are properties of square matrices.
+
+An eigenvector **v** of a square matrix **A** satisfies:
+
+```
+A v = λ v
+```
+
+The corresponding eigenvalue **λ** is the scalar factor by which the eigenvector is scaled.
+
+### ✦ How to Find Eigenvalues and Eigenvectors
+
+#### ➤ Step 1: Find the Eigenvalues (**λ**)
+
+Solve the characteristic equation:
+
+```
+det(A - λI) = 0
+```
+
+where **I** is the identity matrix.
+
+#### ➤ Step 2: Find the Eigenvectors (**v**)
+
+For each eigenvalue **λ**, solve:
+
+```
+(A - λI) v = 0
+```
+
+### ◆ Example 1: Eigenvalues and Eigenvectors of a 2×2 Matrix
+
+Consider the matrix:
+
+```python
+import numpy as np
+
+A = np.array([[4, -2],
+              [1,  1]])
+```
+
+#### ➤ Step 1: Compute the Eigenvalues
+
+Solve:
+
+```
+det(A - λI) = 0
+```
+
+The characteristic equation is:
+
+```
+| 4-λ  -2  |
+|  1    1-λ | = 0
+```
+
+Expanding the determinant:
+
+```
+(4-λ)(1-λ) - (-2)(1) = 0
+4 - 4λ - λ + λ^2 + 2 = 0
+λ^2 - 5λ + 6 = 0
+```
+
+Factorizing:
+
+```
+(λ - 2)(λ - 3) = 0
+```
+
+So, the eigenvalues are **λ\_1 = 2** and **λ\_2 = 3**.
+
+#### ➤ Step 2: Compute the Eigenvectors
+
+For **λ = 2**:
+
+```python
+A - 2I = np.array([[2, -2],
+                   [1, -1]])
+```
+
+Solving:
+
+```
+2x - 2y = 0  =>  x = y
+```
+
+Eigenvector:
+
+```python
+v1 = np.array([[1],
+               [1]])
+```
+
+For **λ = 3**:
+
+```python
+A - 3I = np.array([[1, -2],
+                   [1, -2]])
+```
+
+Solving:
+
+```
+1x - 2y = 0  =>  x = 2y
+```
+
+Eigenvector:
+
+```python
+v2 = np.array([[2],
+               [1]])
+```
+
+### ◆ Example 2: Eigenvalues and Eigenvectors of a 3×3 Matrix
+
+Consider the matrix:
+
+```python
+B = np.array([[2, 4, 3],
+              [1, 5, 7],
+              [6, 8, 9]])
+```
+
+#### ➤ Step 1: Compute the Eigenvalues
+
+Solve:
+
+```
+det(B - λI) = 0
+```
+
+The determinant equation:
+
+```
+| 2-λ   4    3  |
+| 1     5-λ  7  |
+| 6     8    9-λ | = 0
+```
+
+Expanding:
+
+```
+(2-λ)[(5-λ)(9-λ) - (7)(8)] - 4[(1)(9-λ) - (7)(6)] + 3[(1)(8) - (5-λ)(6)] = 0
+```
+
+Solve for **λ** (Eigenvalues). These can be computed using NumPy.
+
+### ◆ Computing Eigenvalues and Eigenvectors using Python
+
+Instead of solving manually, we can use NumPy:
+
+```python
+import numpy as np
+
+# Define matrix A
+A = np.array([[4, -2],
+              [1, 1]])
+
+# Compute eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+```
+
+#### ➤ Output:
+
+```
+Eigenvalues: [2. 3.]
+Eigenvectors:
+ [[0.70710678 0.89442719]
+  [0.70710678 0.4472136 ]]
+```
+
+### ◆ Summary
+
+- Eigenvalues are found by solving **det(A - λI) = 0**.
+- Eigenvectors are found by solving **(A - λI)v = 0**.
+- Eigenvalues tell how much an eigenvector is scaled.
+- Eigenvectors represent directions that remain unchanged under matrix transformations.
+
+
+
+
+
+## Problem 4: Diagonalization of a Matrix
+
+Given matrix:
+
+```
+D = [ 5 4 ]
+    [ 1 2 ]
+```
+
+### Step 1: Compute the Eigenvalues
+Eigenvalues \( \lambda \) are found by solving:
+
+```
+det(D - \lambda I) = 0
+```
+where \( I \) is the identity matrix.
+
+```
+| 5 - \lambda  4 |
+| 1  2 - \lambda | = 0
+```
+Expanding the determinant:
+
+```
+(5 - \lambda)(2 - \lambda) - (4 * 1) = 0
+```
+
+```
+10 - 5\lambda - 2\lambda + \lambda^2 - 4 = 0
+```
+
+```
+\lambda^2 - 7\lambda + 6 = 0
+```
+Factoring:
+
+```
+(\lambda - 6)(\lambda - 1) = 0
+```
+So the eigenvalues are:
+
+```
+\lambda_1 = 6, \lambda_2 = 1
+```
+
+### Step 2: Compute the Eigenvectors
+For each eigenvalue, solve \( (D - \lambda I)v = 0 \).
+
+#### Eigenvector for \( \lambda_1 = 6 \)
+```
+D - 6I = [ -1  4 ]
+          [  1 -4 ]
+```
+Solving \( (-1)x + 4y = 0 \):
+
+```
+x = 4y
+```
+So one eigenvector is:
+
+```
+v_1 = [ 4 ]
+       [ 1 ]
+```
+
+#### Eigenvector for \( \lambda_2 = 1 \)
+```
+D - I = [ 4  4 ]
+        [ 1  1 ]
+```
+Solving \( 4x + 4y = 0 \):
+
+```
+x = -y
+```
+So one eigenvector is:
+
+```
+v_2 = [ -1 ]
+       [  1 ]
+```
+
+### Step 3: Check if the Matrix is Diagonalizable
+Since we found two linearly independent eigenvectors, \( D \) is diagonalizable.
+
+The transformation matrix \( P \) is:
+
+```
+P = [ 4 -1 ]
+    [ 1  1 ]
+```
+The diagonal matrix \( \Lambda \) is:
+
+```
+\Lambda = [ 6  0 ]
+           [ 0  1 ]
+```
+Now, you can compute \( P^{-1} \) and verify:
+
+```
+D = P \Lambda P^{-1}
+```
+
+---
+
+## Problem 5: Stability in Dynamical Systems
+
+Given matrix:
+
+```
+E = [ 0.8  0.3 ]
+    [ 0.2  0.7 ]
+```
+
+### Step 1: Compute the Eigenvalues
+Find \( det(E - \lambda I) = 0 \):
+
+```
+| 0.8 - \lambda  0.3 |
+| 0.2  0.7 - \lambda | = 0
+```
+Expanding the determinant:
+
+```
+(0.8 - \lambda)(0.7 - \lambda) - (0.3 * 0.2) = 0
+```
+
+```
+0.56 - 0.8\lambda - 0.7\lambda + \lambda^2 - 0.06 = 0
+```
+
+```
+\lambda^2 - 1.5\lambda + 0.5 = 0
+```
+Solving using the quadratic formula:
+
+```
+\lambda = (1.5 \pm \sqrt{1.5^2 - 4(0.5)}) / 2
+```
+
+```
+\lambda = (1.5 \pm \sqrt{2.25 - 2}) / 2
+```
+
+```
+\lambda = (1.5 \pm 0.5) / 2
+```
+
+```
+\lambda_1 = (1.5 + 0.5) / 2 = 1, \lambda_2 = (1.5 - 0.5) / 2 = 0.5
+```
+
+### Step 2: Stability Analysis
+Since one eigenvalue is 1, the system is on the boundary of stability. The second eigenvalue 0.5 is less than 1, meaning some states decay over time.
+
+- If all eigenvalues were less than 1 in absolute value, the system would be **stable**.
+- If any eigenvalue were greater than 1, the system would be **unstable**.
+- Since one eigenvalue is exactly 1, the system is **marginally stable**.
+
+### Step 3: Interpretation of Eigenvectors
+Each eigenvector represents a principal mode of transformation. They indicate the directions in which the system behaves consistently over time.
+
+For example, if you start with an initial condition along an eigenvector, the system will continue evolving in that direction, scaled by the corresponding eigenvalue.
+

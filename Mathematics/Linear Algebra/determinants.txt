@@ -1,0 +1,46 @@
+Determinant of a Matrix (np.linalg.det())
+The determinant of a matrix is a scalar value that helps determine:
+✅ If a matrix is invertible (det ≠ 0)
+✅ The volume scaling factor of linear transformations
+✅ The solvability of a system of linear equations
+
+Formula for 2×2 Matrix Determinant
+For a 2×2 matrix:
+A = [ a  b ]
+    [ c  d ]
+
+det(A) = (a * d) - (b * c)
+
+Example: Compute Determinant of a 2×2 Matrix
+
+import numpy as np
+
+A = np.array([[4, 3], 
+              [6, 3]])
+
+det_A = np.linalg.det(A)
+print("Determinant of A:", det_A)
+
+Output:
+Determinant of A: -6.0
+
+Determinant of a 3×3 Matrix
+For a 3×3 matrix:
+A = [ a  b  c ]
+    [ d  e  f ]
+    [ g  h  i ]
+
+det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)
+
+Example: Compute Determinant of a 3×3 Matrix
+A = np.array([[2, 3, 1], 
+              [4, 5, 6], 
+              [7, 8, 9]])
+
+det_A = np.linalg.det(A)
+print("Determinant of A:", det_A)
+
+Key Takeaways
+✅ If det(A) = 0, matrix A is singular (not invertible).
+✅ For larger matrices, NumPy uses optimized algorithms instead of manual determinant calculation.
+✅ Determinants are useful in solving equations, transformations, and eigenvalues.

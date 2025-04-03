@@ -1,0 +1,7 @@
+📌  Calculus for ML
+
+-Limits and Continuity
+-Derivatives and Differentiation
+-Partial Derivatives and Gradient
+-Chain Rule and Backpropagation
+-Optimization Techniques (Gradient Descent, etc.)

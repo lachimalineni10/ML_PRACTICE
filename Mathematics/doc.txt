@@ -2,3 +2,52 @@
 ✅ Linear Algebra ➝ Vectors, Matrices, and Operations
 ✅ Calculus ➝ Differentiation and Optimization
 ✅ Probability & Statistics ➝ Distributions, Mean, Variance, Hypothesis Testing
+
+
+Why Do We Use Mathematics in Machine Learning?
+Mathematics is the foundation of Machine Learning (ML). Every ML algorithm relies on mathematical concepts to work efficiently. Here's how each area of mathematics is used:
+
+1️⃣ Linear Algebra
+🔹 Used for handling data, features, and operations on matrices/vectors.
+🔹 Essential for Neural Networks, PCA (Principal Component Analysis), and Computer Vision.
+
+📌 Example in ML:
+
+Data in ML is often represented as matrices (tables of numbers).
+
+Images are stored as matrix pixels, and transformations like rotation, scaling, and filtering use linear algebra.
+
+2️⃣ Calculus
+🔹 Used in Optimization, where ML models learn by minimizing error/loss functions.
+🔹 Helps understand how gradients (slopes) guide model training in Gradient Descent.
+
+📌 Example in ML:
+
+Gradient Descent Algorithm (used in deep learning) uses derivatives to update model parameters.
+
+Backpropagation in Neural Networks relies on partial derivatives.
+
+3️⃣ Probability & Statistics
+🔹 Helps in making predictions and handling uncertainty in ML.
+🔹 Used in Bayesian Networks, Hypothesis Testing, and Model Evaluation.
+
+📌 Example in ML:
+
+Spam Detection: Probability is used to classify emails as spam or not spam.
+
+Bayes' Theorem is used in Naive Bayes classifiers.
+
+Why We Need Calculus in ML?
+ML models learn from data by adjusting parameters.
+
+To do this, they optimize a cost function (like Mean Squared Error in regression).
+
+Derivatives & gradients help find the best parameters by minimizing errors.
+
+🔹 Example:
+If we have a model:
+
+y=wx+b
+where 
+w and b are parameters, we update them using derivatives of loss functions.
+

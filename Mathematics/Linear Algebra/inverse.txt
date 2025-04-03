@@ -1,0 +1,38 @@
+1. Matrix Inverse
+Definition of Inverse
+The inverse of a square matrix A, denoted as 𝐴⁻¹, is a matrix that satisfies the equation:
+A⋅A⁻¹=A⁻¹⋅A=I
+where I is the identity matrix.
+
+Conditions for a Matrix to be Invertible
+A matrix is invertible if and only if:
+✅ It is a square matrix (same number of rows and columns).
+✅ Its determinant is nonzero (det(A) != 0)
+
+If det(A) = 0, the matrix is singular and does not have an inverse.
+
+Computing the Inverse using NumPy
+To compute the inverse of a matrix in Python, use:
+np.linalg.inv(A)
+
+
+Examples and Exercises
+import numpy as np
+
+# Example 1: Compute the inverse of a 2×2 matrix
+A = np.array([[4, 7], [2, 6]])
+A_inv = np.linalg.inv(A)  # Computing A^(-1)
+print("Inverse of A:\n", A_inv)
+
+# Example 2: Compute the inverse of a 3×3 matrix
+B = np.array([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
+B_inv = np.linalg.inv(B)  # Computing B^(-1)
+print("Inverse of B:\n", B_inv)
+
+# Example 3: Check if a matrix is singular (not invertible)
+C = np.array([[1, 2], [2, 4]])  # This matrix has det(C) = 0
+try:
+    C_inv = np.linalg.inv(C)
+    print("Inverse of C:\n", C_inv)
+except np.linalg.LinAlgError:
+    print("Matrix C is singular and has no inverse.")
