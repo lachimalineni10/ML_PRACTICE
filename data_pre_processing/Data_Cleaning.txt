@@ -1,0 +1,167 @@
+🧼 **Step 3: Data Cleaning**
+
+✅ **Our Goals**
+- Handle missing values
+- Drop irrelevant columns
+- Encode categorical columns
+- Clean duplicates (if any)
+
+---
+
+🔹 **Step 3.1: Handle Missing Values**
+
+```python
+# 1. Check total missing values again
+df.isnull().sum()
+```
+🔍 **Explanation:**
+- `.isnull()` → checks each cell: True if value is NaN, else False
+- `.sum()` → sums all True values column-wise (True = 1, False = 0)
+- Use this before & after imputation to track progress
+
+✅ **Impute Missing Age with Median**
+
+```python
+df['Age'].fillna(df['Age'].median(), inplace=True)
+```
+🔍 **Explanation:**
+- `df['Age']` → selects the Age column
+- `.fillna(...)` → fills all NaN values
+- `df['Age'].median()` → computes the median age (safer than mean if outliers exist)
+- `inplace=True` → modifies the DataFrame directly
+
+👨‍🏫 **ML Concept:**
+- Filling missing values = imputation
+- Median is better than mean when data has outliers
+- Missing values hurt model performance if not handled
+
+✅ **Impute Missing Embarked with Mode**
+
+```python
+df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+```
+🔍 **Explanation:**
+- `df['Embarked'].mode()` → returns the most frequent value(s)
+- `[0]` → selects the top most frequent one
+- Fills missing values with the most common port ('S')
+
+🧠 **Why mode?**
+- Because Embarked is categorical, and we want the most likely class
+
+❌ **Drop the Cabin column (too many missing values)**
+
+```python
+df.drop(columns=['Cabin'], inplace=True)
+```
+🔍 **Explanation:**
+- `.drop(columns=[...])` → removes one or more columns
+- `inplace=True` → modifies df directly
+- Cabin had 687 missing (over 75%) → unreliable for modeling
+
+---
+
+🔹 **Step 3.2: Drop Irrelevant Columns**
+
+```python
+df.drop(columns=['PassengerId', 'Name', 'Ticket'], inplace=True)
+```
+🔍 **Explanation:**
+- These columns have no predictive power:
+  - PassengerId → Just an identifier
+  - Name → Too unique
+  - Ticket → Too random
+
+🙅‍♂️ **ML Tip:** Irrelevant features add noise and hurt accuracy
+
+---
+
+🔹 **Step 3.3: Encode Categorical Columns**
+
+```python
+df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
+```
+🔍 **Explanation:**
+- `.map({...})` → replaces text with numbers
+- 'male' → 0, 'female' → 1
+- Needed for ML models which require numeric input
+
+🧠 **ML Note:**
+- This is called Label Encoding (basic version)
+- Advanced methods include One-Hot Encoding (we’ll use later if needed)
+
+```python
+df = pd.get_dummies(df, columns=['Embarked'], drop_first=True)
+```
+🔍 **Explanation:**
+- `pd.get_dummies(...)` → one-hot encodes categorical variables
+- `columns=[...]` → selects which columns to encode
+- `drop_first=True` → avoids multicollinearity by dropping the first category
+
+This line is converting the "Embarked" column (which has text values like "S", "C", "Q") into separate columns 
+with 0s and 1s — this is called One-Hot Encoding
+
+💡 **Why Do We Need This?**
+
+Machine learning models can’t understand text (like "S", "C", "Q").
+They understand **numbers only**. So, we convert each category into its own column:
+
+📌 **Before One-Hot Encoding:**
+```
+Embarked
+S
+C
+Q
+S
+```
+
+📌 **After One-Hot Encoding:**
+```
+Embarked_C  Embarked_Q
+0           0
+1           0
+0           1
+0           0
+```
+
+We drop the first category (**"S"**) using `drop_first=True` to avoid **multicollinearity** (explained below).
+
+🎓 **ML Concept:**
+- If Embarked has 3 classes: S, C, Q, we only keep 2 dummy columns (e.g. Embarked_C, Embarked_Q)
+- Prevents redundant information
+
+---
+
+🔹 **Step 3.4: Check for Duplicates**
+
+```python
+df.duplicated().sum()
+```
+🔍 **Explanation:**
+- `.duplicated()` → returns a boolean Series: True if a row is duplicate
+- `.sum()` → counts the total number of duplicate rows
+
+```python
+df.drop_duplicates(inplace=True)
+```
+🔍 **Explanation:**
+- Removes any duplicate rows (if any)
+
+---
+
+✅ **Final Check of Cleaned Data**
+
+```python
+print(df.head())
+print(df.info())
+```
+
+✅ **Cleaned Data Structure**
+
+Now your columns should look like this:
+
+```
+Survived	Pclass	Sex	Age	SibSp	Parch	Fare	Embarked_C	Embarked_Q
+```
+
+All numeric, no missing, and ready for modeling. ✅
+

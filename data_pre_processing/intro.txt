@@ -1,0 +1,33 @@
+✅ Data Preprocessing Flow (Step-by-Step)
+
+1. Data Collection
+   → Gather raw data from CSVs, databases, APIs, etc.
+
+2. Data Inspection
+   → View structure, types, missing values, and summary using:
+      - df.head(), df.info(), df.describe()
+
+3. Data Cleaning
+   → Handle missing values (drop or fill)
+   → Fix incorrect data types
+   → Remove or treat outliers
+   → Remove duplicates
+
+4. Data Transformation
+   → Normalize or standardize numerical features
+   → Encode categorical variables
+   → Log-transform skewed data (if needed)
+
+5. Feature Engineering
+   → Feature selection (keep useful features)
+   → Feature extraction (create new from existing)
+   → Dimensionality reduction (e.g., PCA)
+
+6. Splitting the Data
+   → Split into Train/Test (and optionally Validation) sets
+
+7. Scaling and Encoding (Post-split if needed)
+   → Scale numerical data (StandardScaler / MinMaxScaler)
+   → Encode categories (OneHotEncoder / LabelEncoder)
+
+8. Ready for Model Training 🚀

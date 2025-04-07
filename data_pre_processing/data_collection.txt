@@ -1,0 +1,52 @@
+📦 **Step 1: Data Collection**
+
+✅ **Definition:**
+Data collection is the process of gathering raw data from various sources so it can be used to train machine learning models.
+
+✅ **Explanation:**
+In machine learning, data is fuel. The better the data, the better the model. You can collect data from:
+- CSV or Excel files
+- SQL databases
+- APIs (web services)
+- Web scraping
+- Built-in datasets (e.g., from sklearn, seaborn, tensorflow)
+
+🔧 **Common Python Tools for Data Collection:**
+
+| Source            | Python Library/Method                                    |
+|-------------------|----------------------------------------------------------|
+| CSV/Excel         | `pandas.read_csv()`, `pandas.read_excel()`               |
+| SQL Database      | `sqlalchemy`, `sqlite3`, `pandas.read_sql()`             |
+| APIs              | `requests`, `json`, `pandas.json_normalize()`            |
+| Web Scraping      | `BeautifulSoup`, `requests`, `scrapy`                    |
+| Built-in Datasets | `sklearn.datasets.load_iris()`, `seaborn.load_dataset()` |
+
+📄 **Example 1: Load CSV File**
+
+```python
+import pandas as pd
+
+# Load data from a CSV file
+df = pd.read_csv("data.csv")  # Make sure 'data.csv' exists in the same directory
+print(df.head())  # Shows the first 5 rows
+```
+
+📝 **Explanation:**
+- `pandas`: The most common library for data manipulation in ML.
+- `read_csv()`: Loads a CSV file into a DataFrame (2D table-like structure).
+- `head()`: Preview the first 5 rows.
+
+🧠 **What You Need to Understand:**
+
+➤ **Python Concepts Used:**
+- Modules and Importing (`import pandas as pd`)
+- File Handling (understanding file paths)
+
+➤ **Data Structures:**
+- **DataFrame**: A 2D tabular structure like an Excel sheet.
+- **Series**: A single column of data.
+
+➤ **ML Perspective:**
+- Without structured, clean data, machine learning models can't learn patterns effectively.
+- The better your data collection pipeline, the easier the rest of the ML flow will be.
+
